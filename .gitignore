@@ -1,0 +1,15 @@
+# Backup files
+*~
+*.swp
+*.swo
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Private/secret files (add your own as needed)
+*secret*
+*private*
+*.key
+*.pem
