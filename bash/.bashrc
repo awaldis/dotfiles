@@ -128,3 +128,5 @@ export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 # Added by Andy Waldis 2025-11-05
 eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/montys.omp.json)"
+
+export LS_COLORS="${LS_COLORS}:di=1;37;44"
