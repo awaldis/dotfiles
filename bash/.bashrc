@@ -120,13 +120,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Added by Andy Waldis 2025-11-04
+# Aliases for commmon commands.
 alias goto_lin='cd ~/repos/linear-algebra-done-right'
 
-# Added by Andy Waldis 2025-11-09
+# Added for oh-my-posh
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
-# Added by Andy Waldis 2025-11-05
+# Add custom prompt
 eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/montys.omp.json)"
 
+# Change colors for "ls" command.
 export LS_COLORS="${LS_COLORS}:di=1;37;44"
+
+# Add situational awareness info when starting new terminal.
+echo "Terminal started: $(date)"
