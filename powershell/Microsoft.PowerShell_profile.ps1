@@ -1,4 +1,4 @@
-oh-my-posh init pwsh --config "$HOME\source\repos\dotfiles\oh-my-posh\montys.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$HOME\source\repos\dotfiles\oh-my-posh\awaldis.omp.json" | Invoke-Expression
 
 # PSReadLine configuration for history search
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward

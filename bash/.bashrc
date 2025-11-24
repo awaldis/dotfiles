@@ -127,7 +127,7 @@ alias goto_lin='cd ~/repos/linear-algebra-done-right'
 export PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 
 # Add custom prompt
-eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/montys.omp.json)"
+eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/awaldis.omp.json)"
 
 # Change colors for "ls" command.
 export LS_COLORS="${LS_COLORS}:di=1;37;44"
