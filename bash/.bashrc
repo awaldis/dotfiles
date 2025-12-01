@@ -133,4 +133,4 @@ eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/awaldis.omp.json)"
 export LS_COLORS="${LS_COLORS}:di=1;37;44"
 
 # Add situational awareness info when starting new terminal.
-echo "Terminal started: $(date)"
+echo "Shell started at : $(date '+%a %b %d %H:%M:%S UTC%:::z %Y Week %V')"
