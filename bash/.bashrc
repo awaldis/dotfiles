@@ -132,5 +132,25 @@ eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/awaldis.omp.json)"
 # Change colors for "ls" command.
 export LS_COLORS="${LS_COLORS}:di=1;37;44"
 
+# Gather system information for display at startup
+SYSTEM_KERNEL="$(uname -s) $(uname -r)"
+SYSTEM_ARCH="$(uname -m)"
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    SYSTEM_DISTRO="$PRETTY_NAME"
+elif [ -f /etc/lsb-release ]; then
+    . /etc/lsb-release
+    SYSTEM_DISTRO="$DISTRIB_DESCRIPTION"
+elif command -v lsb_release >/dev/null 2>&1; then
+    SYSTEM_DISTRO="$(lsb_release -ds)"
+elif [ "$(uname -s)" = "Darwin" ]; then
+    SYSTEM_DISTRO="macOS $(sw_vers -productVersion)"
+else
+    SYSTEM_DISTRO="Unknown"
+fi
+
 # Add situational awareness info when starting new terminal.
-echo "Shell started at : $(date '+%a %b %d %H:%M:%S UTC%:::z %Y Week %V')"
+printf "%-17s: %s\n" "Kernel" "$SYSTEM_KERNEL"
+printf "%-17s: %s\n" "Architecture" "$SYSTEM_ARCH"
+printf "%-17s: %s\n" "Distribution" "$SYSTEM_DISTRO"
+printf "%-17s: %s\n" "Shell started at" "$(date '+%a %b %d %H:%M:%S UTC%:::z %Y Week %V')"
