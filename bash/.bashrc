@@ -135,6 +135,7 @@ export LS_COLORS="${LS_COLORS}:di=1;37;44"
 # Gather system information for display at startup
 SYSTEM_KERNEL="$(uname -s) $(uname -r)"
 SYSTEM_ARCH="$(uname -m)"
+SYSTEM_TTY="$(tty)"
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     SYSTEM_DISTRO="$PRETTY_NAME"
@@ -150,6 +151,8 @@ else
 fi
 
 # Add situational awareness info when starting new terminal.
+printf "%-17s: %s %s\n" "Shell" "bash" "$BASH_VERSION"
+printf "%-17s: %s\n" "TTY" "$SYSTEM_TTY"
 printf "%-17s: %s\n" "Kernel" "$SYSTEM_KERNEL"
 printf "%-17s: %s\n" "Architecture" "$SYSTEM_ARCH"
 printf "%-17s: %s\n" "Distribution" "$SYSTEM_DISTRO"
