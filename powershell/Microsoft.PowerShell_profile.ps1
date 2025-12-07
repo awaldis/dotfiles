@@ -4,8 +4,10 @@ oh-my-posh init pwsh --config "$HOME\source\repos\dotfiles\oh-my-posh\awaldis.om
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-# Gather info to print at shell start.
 & {
+    #----------------------------------------------------------------------
+    # Gather info to print at shell start.
+    #----------------------------------------------------------------------
     $now = Get-Date
   
     # Default OS string
@@ -22,6 +24,15 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
         }
     }
 
-    Write-Host "Shell started at : $($now.ToString('ddd MMM dd HH:mm:ss UTCzzz yyyy')) Week $(Get-Date $now -UFormat %V)" -ForegroundColor Cyan
-    Write-Host "OS Version       : $osString" -ForegroundColor Cyan
+    # Start-time info
+    $dateStr = $now.ToString('ddd MMM dd HH:mm:ss UTCzzz yyyy')
+    $weekNum = Get-Date $now -UFormat %V
+
+    #----------------------------------------------------------------------
+    # Print the info gathered above.
+    #----------------------------------------------------------------------
+    Write-Host "Shell            : PowerShell $($PSVersionTable.PSVersion)" -ForegroundColor Cyan
+    Write-Host "TTY              : $($Host.Name) $($Host.Version)"          -ForegroundColor Cyan
+    Write-Host "OS Version       : $osString"                               -ForegroundColor Cyan
+    Write-Host "Shell started at : $dateStr Week $weekNum"                  -ForegroundColor Cyan
 }
