@@ -64,6 +64,34 @@ else
     echo "git is already installed."
 fi
 
+# Install unzip if not present (required for oh-my-posh)
+if ! command_exists unzip; then
+    echo "Installing unzip..."
+    case $PKG_MANAGER in
+        apt)
+            sudo apt-get update && sudo apt-get install -y unzip
+            ;;
+        dnf)
+            sudo dnf install -y unzip
+            ;;
+        yum)
+            sudo yum install -y unzip
+            ;;
+        pacman)
+            sudo pacman -S --noconfirm unzip
+            ;;
+        brew)
+            brew install unzip
+            ;;
+        *)
+            echo "ERROR: Could not detect package manager. Please install unzip manually."
+            exit 1
+            ;;
+    esac
+else
+    echo "unzip is already installed."
+fi
+
 # Install oh-my-posh
 if ! command_exists oh-my-posh; then
     echo "Installing oh-my-posh..."
