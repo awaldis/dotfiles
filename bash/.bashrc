@@ -135,7 +135,7 @@ export LS_COLORS="${LS_COLORS}:di=1;37;44"
 # When in WSL, forward browser invocations to Windows.
 if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
     # We are in WSL
-    export BROWSER='/mnt/c/Windows/explorer.exe'
+    export BROWSER=$HOME/.local/bin/run-in-win
 fi
 
 # Gather system information for display at startup

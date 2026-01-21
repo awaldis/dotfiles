@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# Script Name: run-in-win
+# Description: Opens a file or URL from the WSL2 terminal using the default 
+#              Windows application or browser. automatically converts Linux 
+#              file paths to Windows UNC paths.
+#
+# Usage:       run-in-win <filename|directory|url>
+# Examples:    run-in-win image.png        (Opens in Windows Photos)
+#              run-in-win .                (Opens current folder in Explorer)
+#              run-in-win http://google.com (Opens in default browser)
+#
+
+INPUT="$1"
+
+# Check if the user provided an argument
+if [ -z "$INPUT" ]; then
+    echo "Usage: run-in-win <filename|url>"
+    exit 1
+fi
+
+# Check if the input is a file or directory that exists locally
+if [ -e "$INPUT" ]; then
+    # Convert Linux path (e.g., /home/user/img.png) to Windows path (\\wsl$\...)
+    INPUT=$(wslpath -w "$INPUT")
+fi
+
+# Execute PowerShell silently
+# -NoProfile: Skips loading user profile for speed
+# Start-Process: Launches the app associated with the file type
+# > /dev/null 2>&1: Suppresses all text output and errors
+/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -Command "Start-Process -FilePath '$INPUT'" > /dev/null 2>&1
