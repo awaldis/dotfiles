@@ -132,6 +132,12 @@ eval "$(oh-my-posh init bash --config ~/dotfiles/oh-my-posh/awaldis.omp.json)"
 # Change colors for "ls" command.
 export LS_COLORS="${LS_COLORS}:di=1;37;44"
 
+# When in WSL, forward browser invocations to Windows.
+if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
+    # We are in WSL
+    export BROWSER='/mnt/c/Windows/explorer.exe'
+fi
+
 # Gather system information for display at startup
 SYSTEM_KERNEL="$(uname -s) $(uname -r)"
 SYSTEM_ARCH="$(uname -m)"
